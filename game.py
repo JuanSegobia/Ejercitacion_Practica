@@ -15,12 +15,32 @@ attempt = 0
 # Lista para almacenar las letras adivinadas
 guessed_letters = []
 
+# Lista de vocales
+vowels = ['a', 'e', 'i', 'o', 'u']
+
 print("¡Bienvenido al juego de adivinanzas!")
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
-word_displayed = "_" * len(secret_word)
+
+# Seleccion de dificultad
+print("Selecciona el nivel de dificultad: ")
+print("1 - Fácil")
+print("2 - Medio")
+print("3 - Difícil")
+level = int (input("Ingrese el número correspondiente al nivel: "))
+
+# Seleccion de nivel 1 (Si elijo este nivel, me muevo por la secret word, y de ser vocal la muestra. Sino "_"
+
+if level == 1:
+    word_displayed = ""
+    for letter in secret_word:
+        if letter in vowels:
+            guessed_letters.append(letter)
+            word_displayed += letter
+        else:
+            word_displayed += "_"
 
 # Mostrar la palabra parcialmente adivinada
-print(f"Palabra: {word_displayed}")
+    print(f"Palabra: {word_displayed}")
 
 while attempt < max_attempts:
     # Pedir al jugador que ingrese una letra
