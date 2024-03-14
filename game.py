@@ -38,9 +38,21 @@ if level == 1:
             word_displayed += letter
         else:
             word_displayed += "_"
-
-# Mostrar la palabra parcialmente adivinada
-    print(f"Palabra: {word_displayed}")
+elif level == 2:
+    word_displayed = ""
+    letter = secret_word[0]
+    guessed_letters.append(letter)
+    word_displayed += letter
+    for letter in secret_word[1: -1]:
+        word_displayed += "_"
+    letter = secret_word[-1]
+    guessed_letters.append(letter)
+    word_displayed += letter
+else:
+    word_displayed = "_" * len(secret_word)
+    
+# Mostrar la palabra parcialmente adivinada 
+print(f"Palabra: {word_displayed}")
 
 while attempt < max_attempts:
     # Pedir al jugador que ingrese una letra
