@@ -9,6 +9,9 @@ secret_word = random.choice(words)
 # Número máximo de intentos permitidos
 max_attempts = 10
 
+# Intento actual
+attempt = 0
+
 # Lista para almacenar las letras adivinadas
 guessed_letters = []
 
@@ -19,7 +22,7 @@ word_displayed = "_" * len(secret_word)
 # Mostrar la palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
 
-for i in range(max_attempts):
+while attempt < max_attempts:
     # Pedir al jugador que ingrese una letra
     letter = input("Ingresa una letra: ").lower()
 
@@ -32,6 +35,9 @@ for i in range(max_attempts):
     if letter in guessed_letters:
         print("Ya has intentado con esa letra. Intenta con otra.")
         continue
+
+    # Incrementar el attempt
+    attempt += 1
 
     # Agregar la letra a la lista de letras adivinadas
     guessed_letters.append(letter)
